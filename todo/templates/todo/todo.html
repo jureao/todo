@@ -1,0 +1,18 @@
+{%extends 'todo/base.html'%}
+{%block content%}
+    <h1>Die Auflistung deiner Aufgaben</h1>
+    {%for todo in todos%}
+      <li>{{todo.content}}
+        <form action="/deletetodo/{{todo.id}}/"
+        style="display:inline;"
+        method="post">{%csrf_token%}
+
+        <input type ="submit" value = "abgeschloßen"/></li>
+        </form>
+
+
+   {%endfor%}
+   <form action="/addtodo/" method="post">{%csrf_token%}
+     <input type = "text" name = "content"/>
+     <input type ="submit" value = "Weitere Aufgabe"/>
+{%endblock%}
